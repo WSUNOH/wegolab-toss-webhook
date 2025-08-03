@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).send('Only POST allowed');
   }
-
+console.log('🔥 req.body:', req.body);
   const { user, method, totalAmount, discountAmount, paymentDate, plan_code } = req.body;
 
   try {
@@ -33,4 +33,4 @@ export default async function handler(req, res) {
     res.status(500).json({ error: 'Google Sheets API Error' });
   }
 }
-console.log('🔥 req.body:', req.body);
+
