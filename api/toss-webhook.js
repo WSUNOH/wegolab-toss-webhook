@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     return res.status(405).send('Only POST allowed');
   }
 console.log('🔥 req.body:', req.body);
-  const { user, method, totalAmount, discountAmount, paymentDate, plan_code } = req.body;
+  const { user_id, method, amount, discount, orderId, product } = req.body;
 
   try {
     const auth = new google.auth.GoogleAuth({
@@ -23,7 +23,7 @@ console.log('🔥 req.body:', req.body);
       range: '시트1!A:F', // 시트 이름 맞게 수정 가능
       valueInputOption: 'USER_ENTERED',
       requestBody: {
-        values: [[user, method, totalAmount, discountAmount, paymentDate, plan_code]],
+        values: [[user_id, method, amount, discount, orderId, product]],
       },
     });
 
