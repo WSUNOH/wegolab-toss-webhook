@@ -1,0 +1,8 @@
+{
+  "name": "wegolab-toss-webhook",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "googleapis": "^132.0.0"
+  }
+}
