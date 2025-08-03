@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     return res.status(405).send('Only POST allowed');
   }
 
-  const { name, birth, plan, id } = req.body;
+  const { student_id, method, totlaAmount, discountAmount,paymentDate, plan_code } = req.body;
 
   try {
     const auth = new google.auth.GoogleAuth({
@@ -20,10 +20,10 @@ export default async function handler(req, res) {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.SHEET_ID,
-      range: '시트1!A:G', // 시트 이름 맞게 수정 가능
+      range: '시트1!A:F', // 시트 이름 맞게 수정 가능
       valueInputOption: 'USER_ENTERED',
       requestBody: {
-        values: [[student_id, method, totlaAmount, discountAmount,paymentDate]],
+        values: [[student_id, method, totlaAmount, discountAmount,paymentDate, plan_code]],
       },
     });
 
