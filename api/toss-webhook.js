@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end();
 
   const {
-    user_id, name, birth, orderId, amount, discount, method, product
+    student_id, name, birth, orderId, amount, discount, method, product
   } = req.body;
 
   const auth = new JWT({
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
     range: `${sheetName}!A1`,
     valueInputOption: 'USER_ENTERED',
     requestBody: {
-      values: [[user_id, name, birth, orderId, amount, discount, method, product, now]],
+      values: [[student_id, name, birth, orderId, amount, discount, method, product, now]],
     },
   });
 
