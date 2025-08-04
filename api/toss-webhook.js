@@ -17,13 +17,13 @@ export default async function handler(req, res) {
   const sheets = google.sheets({ version: 'v4', auth });
 
   const spreadsheetId = process.env.SHEET_ID;
-  const sheetName = '결제기록'; // 원하는 시트 이름
+  const sheetName = '시트1'; // 원하는 시트 이름
 
   const now = new Date().toISOString();
 
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: `${시트1}!A1`,
+    range: `${sheetname}!A1`,
     valueInputOption: 'USER_ENTERED',
     requestBody: {
       values: [[user_id, name, birth, orderId, amount, discount, method, product, now]],
